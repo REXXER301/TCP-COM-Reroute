@@ -14,14 +14,14 @@ namespace ESP32_TCPServer
     {
         const string host = ""; // IP address of Server
         const string left_glove = "";         //IP adress of left glove
-        const string right_glove = "";        ////IP adress of right glove
+        const string right_glove = "";        //IP adress of right glove
 
         const int port = 65432; //Port to listen on (non-privileged ports are > 1023)
         SerialPort serialPort;  //COM Port left:7->8 & right:9->10
         static void Main(string[] args)
         {
             Program main = new Program();
-            main.server_start();  //starting the server for left glove
+            main.server_start();  //starting the server
 
             Console.ReadLine();
         }
@@ -53,7 +53,7 @@ namespace ESP32_TCPServer
             {
                 serialPort = new SerialPort("COM7"); // 7->8
             }
-            else if (connected_ip.Split(':')[0] == right_glove) // right glove
+            else if (connected_ip.Split(':')[0] == right_glove)
             {
                 serialPort = new SerialPort("COM9"); // 9->10
             }
