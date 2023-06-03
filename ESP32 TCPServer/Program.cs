@@ -12,10 +12,12 @@ namespace ESP32_TCPServer
 {
     class Program
     {
-        const string host = ""; // IP address of Server
-        const string left_glove = "";         //IP adress of left glove
-        const string right_glove = "";        //IP adress of right glove
-
+        const string host = "";          //IP address of Server
+        const string left_glove = "";    //IP adress of left glove
+        const string right_glove = "";   //IP adress of right glove
+        
+        const bool debug_output = true;
+        
         const int port = 65432; //Port to listen on (non-privileged ports are > 1023)
         SerialPort serialPort;  //COM Port left:7->8 & right:9->10
         static void Main(string[] args)
@@ -95,7 +97,8 @@ namespace ESP32_TCPServer
             while (client.Connected)
             {
                 string message = reader.ReadLine();
-                Console.WriteLine(message);
+                if (debug_output)
+                    Console.WriteLine(message); 
                 serialPort.WriteLine(message);
             }
             closing.Invoke();
