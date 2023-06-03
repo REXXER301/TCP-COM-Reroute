@@ -10,7 +10,7 @@ using System.Threading;
 
 namespace ESP32_TCPServer
 {
-    class Program
+    class TCPServer
     {
         const string host = "";          //IP address of Server
         const string left_glove = "";    //IP adress of left glove
