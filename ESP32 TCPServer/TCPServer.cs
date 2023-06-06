@@ -118,6 +118,9 @@ namespace ESP32_TCPServer
             respond_thread.Abort();
             message_thread.Abort();
             serialPort.Close();
+            reader.Close();
+            writer.Close();
+            client.Close()
             Console.WriteLine("Connection closed");
         }
 
