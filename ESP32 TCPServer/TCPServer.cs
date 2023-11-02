@@ -120,7 +120,7 @@ namespace ESP32_TCPServer
             serialPort.Close();
             reader.Close();
             writer.Close();
-            client.Close()
+            client.Close();
             Console.WriteLine("Connection closed");
         }
 
