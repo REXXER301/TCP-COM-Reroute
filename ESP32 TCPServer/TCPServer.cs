@@ -12,14 +12,25 @@ namespace ESP32_TCPServer
 {
     class TCPServer
     {
+        //Change these to match your setup
         const string host = "";          //IP address of Server
         const string left_glove = "";    //IP adress of left glove
         const string right_glove = "";   //IP adress of right glove
-        
+        //COM Ports
+        //need to be created with com0com
+        //e.g. left:7->8 & right:9->10
+        //Put first number here and the second in the lucidgloves driver
+        const string left_serialPort = "COM7"; //Serial Port for left glove
+        const string right_serialPort = "COM9"; //Serial Port for right glove
+
+        //Debug
         const bool debug_output = true;
-        
+
+        //Change only if needed
         const int port = 65432; //Port to listen on (non-privileged ports are > 1023)
-        SerialPort serialPort;  //COM Port left:7->8 & right:9->10
+       
+        SerialPort serialPort;  //COM Port e.g. left:7->8 & right:9->10
+        
         static void Main(string[] args)
         {
             Program main = new Program();
@@ -53,11 +64,11 @@ namespace ESP32_TCPServer
 
             if (connected_ip.Split(':')[0] == left_glove) 
             {
-                serialPort = new SerialPort("COM7"); // 7->8
+                serialPort = new SerialPort(left_serialPort); // 7->8
             }
             else if (connected_ip.Split(':')[0] == right_glove)
             {
-                serialPort = new SerialPort("COM9"); // 9->10
+                serialPort = new SerialPort(right_serialPort); // 9->10
             }
             else {
                 Console.WriteLine("unknown device connected");
