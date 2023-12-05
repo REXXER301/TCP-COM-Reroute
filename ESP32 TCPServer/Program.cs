@@ -8,7 +8,7 @@ using System.IO;
 using System.IO.Ports;
 using System.Threading;
 
-namespace ESP32_TCPServer
+namespace Program
 {
     class TCPServer
     {
