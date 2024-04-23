@@ -33,7 +33,7 @@ namespace Program
         
         static void Main(string[] args)
         {
-            Program main = new Program();
+            TCPServer main = new TCPServer();
             main.server_start();  //starting the server
 
             Console.ReadLine();
