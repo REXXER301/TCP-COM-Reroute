@@ -57,5 +57,6 @@ for c in config:
  # First start message
 if first_start:
     print("Please fill in the IP addresses of both gloves and the corresponding COM-Ports you have created with com0com.")
+    input("Press any key to exit")
 else:
     start_server(config)
