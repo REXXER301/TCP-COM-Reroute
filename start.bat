@@ -1,2 +1,2 @@
 call ./venv/Scripts/activate
-call init.py
+call python init.py
