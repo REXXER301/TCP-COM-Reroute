@@ -81,7 +81,7 @@ def start_server(config):
     host = config["host_ip"]
     port = config["tcp_port"]
 
-    print(f"Starting server on {host}:{port}")
+    print(f"\nStarting server on {host}:{port}")
     print(f"Waiting for connections from:\n Left Glove:  {left_glove_ip}\n Right Glove: {right_glove_ip}")
 
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

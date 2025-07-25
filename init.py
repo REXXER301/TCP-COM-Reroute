@@ -50,7 +50,9 @@ def load_config(path=CONFIG_PATH, defaults=DEFAULT_CONFIG):
 
 # Usage
 config, first_start = load_config()
-print(f"Loaded config: {config}")
+print(f"Config loaded successfully:")
+for c in config:
+    print(f"{c} = {config[c]}")
 
  # First start message
 if first_start:
