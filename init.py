@@ -12,7 +12,8 @@ DEFAULT_CONFIG = {
     "right_glove_com_port": "COM9",  # or "/dev/ttyUSB2" on Linux
     "host_ip": "0.0.0.0",
     "tcp_port": 65432, # Port to listen on (non-privileged ports are > 1023)
-    "baud_rate": 115200
+    "baud_rate": 115200,
+    "debug_output": False
 }
 
 def load_config(path=CONFIG_PATH, defaults=DEFAULT_CONFIG):

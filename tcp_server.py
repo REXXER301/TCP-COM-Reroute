@@ -5,7 +5,6 @@ import time
 import signal
 import sys
 
-debug_output = True
 shutdown_flag = threading.Event()
 active_connections = []
 
@@ -23,7 +22,7 @@ def wait_for_serial(port_name, baud_rate):
             time.sleep(0.5)
     return None
 
-def handle_connection(conn, addr, serial_port_name, baud_rate):
+def handle_connection(conn, addr, serial_port_name, baud_rate, debug_output):
     glove_ip = addr[0]
     print(f"{glove_ip} connected, assigned to {serial_port_name}")
 
@@ -83,6 +82,7 @@ def start_server(config):
     baud_rate = config["baud_rate"]
     host = config["host_ip"]
     port = config["tcp_port"]
+    debug_output = config["debug_output"]
 
     print(f"\nStarting server on {host}:{port}")
     print(f"Waiting for connections from:\n Left Glove:  {left_glove_ip}\n Right Glove: {right_glove_ip}")
@@ -115,10 +115,10 @@ def start_server(config):
                 ip = addr[0]
                 if ip == left_glove_ip:
                     print("Left glove connected")
-                    threading.Thread(target=handle_connection, args=(conn, addr, left_port, baud_rate), daemon=True).start()
+                    threading.Thread(target=handle_connection, args=(conn, addr, left_port, baud_rate, debug_output), daemon=True).start()
                 elif ip == right_glove_ip:
                     print("Right glove connected")
-                    threading.Thread(target=handle_connection, args=(conn, addr, right_port, baud_rate), daemon=True).start()
+                    threading.Thread(target=handle_connection, args=(conn, addr, right_port, baud_rate, debug_output), daemon=True).start()
                 else:
                     print(f"Unknown device connected from {ip}. Please check config.json.")
                     conn.close()
