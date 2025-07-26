@@ -15,4 +15,4 @@ Reroutes a TCP Server onto com ports for lucidgloves-proto5, needs 2 pairs of li
 > [!IMPORTANT]
 > Gloves and host pc must be connected to the same network for this to work!<br>
 
-<br>Do not edit tcp_port and baud_rate if you don't know what you are doing.
+<br>Do not edit host_ip, tcp_port or baud_rate if you don't know what you are doing.
