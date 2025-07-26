@@ -10,13 +10,16 @@ shutdown_flag = threading.Event()
 active_connections = []
 
 def wait_for_serial(port_name, baud_rate):
+    first = True
     while not shutdown_flag.is_set():
         try:
             ser = serial.Serial(port_name, baud_rate, timeout=1)
             print(f"Serial port {port_name} opened.")
             return ser
         except serial.SerialException:
-            print(f"Waiting for {port_name}...")
+            if first:
+                print(f"Waiting for {port_name}...")
+                first=False
             time.sleep(0.5)
     return None
 
